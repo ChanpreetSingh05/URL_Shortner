@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>URL Shortner</title>
+    <style>
+        .table td .table td {
+            border-top: none !important;
+        }
+
+        div.dataTables_wrapper, div.dataTables_length.d-flex.flex-row label {
+            margin-top: 1.6rem;
+            margin-right: 1rem;
+        }
+
+        div.dataTables_wrapper, div.dataTables_length.d-flex.flex-row div {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+      <div class="container pt-5 mb-5 pb-2">
+
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card rounded text-center shadow-lg mb-5 bg-white">
+                        <div class="card-header rounded text-light text-center py-3 mb-4" style="background-color: #455a64 !important">
+                            URL Shortner
+                        </div>
+                        <div class="card-body px-lg-5 pt-4">
+                            <form class="text-center" style="color: #757575;" action="/tinyUrl" method="POST">
+                                <input type="text" placeholder="URL" name="fullURL" id="fullURL" required
+                                    class="form-control col my-2">
+                                <button type="submit" class="btn btn-primary btn-sm my-5"
+                                    style="width: 100px; background-color: #455a64 !important">Shrink</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div><br /><br /><br />
+
+            <div class="row">
+                <div class="col">
+                    <table id="dtBasicExample" class="display table" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Full URL</th>
+                                <th>Shrinked URL</th>
+                                <th>Clicks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% tinyURls.forEach(tinyURl => { %>
+                            <tr>
+                                <td><a href="<%= tinyURl.fullURL %>"><%= 
+                                        tinyURl.fullURL %></a></td>
+                                <td><a href="<%= tinyURl.shortURL %>"><%= 
+                                        tinyURl.shortURL %></a></td>
+                                <td><%= tinyURl.clicks %></td>
+                            </tr>
+                            <% }) %>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Full URL</th>
+                                <th>Shrinked URL</th>
+                                <th>Clicks</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- <h1>URL Shortner</h1>
+    <form action="/tinyUrl" method ="POST" class ="my-4 form-inline">
+        <input type="text" placeholder="URL" 
+        name= "fullURL" id ="fullURL"
+        required class="form-control col mr-2">
+        <button type="submit" class="btn btn-success">Shrink</button>
+    </form>
+
+    <table class =" col table table-striped table-responsive">
+        <thead>
+            <tr>
+                <th>Full URL</th>
+                <th>Shrinked URL</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tinyURls.forEach(tinyURl => { %>
+                <tr>
+                    <td><a href="<%= tinyURl.fullURL %>"><%= 
+                        tinyURl.fullURL %></a></td>
+                     <td><a href="<%= tinyURl.shortURL %>"><%= 
+                        tinyURl.shortURL %></a></td>
+                    <td><%= tinyURl.clicks %></td>
+                </tr>
+             <% }) %> 
+           
+        </tbody>
+    </table> -->
+    
+</body>
+
+</html>
